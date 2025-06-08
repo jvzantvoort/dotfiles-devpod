@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export XDG_CONFIG_HOME="${HOME}/.config"
+mkdir -p "${XDG_CONFIG_HOME}"
+
+for indx in config/nvim bash_profile bashrc inputrc tmux.conf zshrc; do
+  printf "link %s/%s to %s/%s\n" "${PWD}" "${indx}" "${HOME}" "${indx}"
+  ln -sf "${PWD}/${indx}" "${HOME}/.${indx}"
+done
